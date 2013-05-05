@@ -1,12 +1,11 @@
 #!/bin/bash
 
-echo What is the path of this script?
-read PathToScript
+ScriptLocation=$PWD
 
 echo What is the path to your Minecraft launchers?
 read PathToLaunchers
 
-echo alias Minecraft='./Scripts/MinecraftLaunchSelector/Minecraft' >> ~/.bashrc 
+echo alias Minecraft=$PWD/Minecraft >> ~/.bashrc 
 
 cat > Minecraft << EOF
 ##!/bin/bash
