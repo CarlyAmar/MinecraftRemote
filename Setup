@@ -1,12 +1,12 @@
 #!/bin/bash
 
-echo What is the path of this script? Format \/ ==\ home
+echo What is the path of this script?
 read PathToScript
 
 echo What is the path to your Minecraft launchers?
 read PathToLaunchers
 
-echo 'export alias Minecraft='.$PathToScript'' >> ~/.bashrc 
+echo alias Minecraft='./Scripts/MinecraftLaunchSelector/Minecraft' >> ~/.bashrc 
 
 cat > Minecraft << EOF
 ##!/bin/bash
@@ -31,3 +31,11 @@ java -jar $PathToLaunchers/\$Launcher.jar
 EOF
 
 chmod 755 Minecraft
+echo "Would you like to delete this Setup File? [Y/N]"
+read "delete"
+if [ $delete == "Y" ]; then
+        rm -rf Setup
+        echo "Finished!"
+else
+        echo "Finished!"
+fi
