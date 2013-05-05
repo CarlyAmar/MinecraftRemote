@@ -1,0 +1,31 @@
+##!/bin/bash
+
+echo What is the path of this script? (Format / == home)
+read PathToScript
+
+echo What is the path to your Minecraft launchers?
+read PathToLaunchers
+
+echo 'export alias Minecraft='.$PathToScript'' >> ~/.bashrc 
+
+cat > Minecraft << EOF
+##!/bin/bash
+
+
+
+#This script will ask which launcher you would like to use and launch Minecraft from the one selected.
+#Make sure to rename launchers so they correspond with the ones listed
+
+cd $PathToLaunchers
+echo ls
+echo Which launcher would you like to use?
+
+#checks input for Launcher
+read Launcher
+
+echo You have selected $Launcher !
+echo Starting Minecraft...
+
+#launches whatever was chosen
+java -jar "$Launcher".jar
+EOF
