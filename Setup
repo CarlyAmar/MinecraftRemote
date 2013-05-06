@@ -1,11 +1,16 @@
 #!/bin/bash
 
 ScriptLocation=$PWD
+echo "Welcome to the Launcher Selector!"
+echo "Created by Cheapshades97"
 
 echo What is the path to your Minecraft launchers?
 read PathToLaunchers
 
+echo "adding Alias..."
 echo alias Minecraft=$PWD/Minecraft >> ~/.bashrc 
+
+echo "Creating Selector..."
 
 cat > Minecraft << EOF
 ##!/bin/bash
@@ -16,8 +21,9 @@ cat > Minecraft << EOF
 #Make sure to rename launchers so they correspond with the ones listed
 
 cd $PathToLaunchers
-ls
-echo Which launcher would you like to use?
+echo "Availible launchers"
+ls --color
+echo "Which launcher would you like to use?"
 
 #checks input for Launcher
 read Launcher
@@ -33,8 +39,10 @@ chmod 755 Minecraft
 echo "Would you like to delete this Setup File? [Y/N]"
 read "delete"
 if [ $delete == "Y" ]; then
+        echo "deleting..."
         rm -rf Setup
         echo "Finished!"
 else
         echo "Finished!"
 fi
+echo "Restart Terminal and type Minecraft to use the Selector!"
