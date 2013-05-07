@@ -1,0 +1,23 @@
+#!/bin/bash
+
+echo "Welcome to my Alpha launcher!"
+echo "What would you like to do?"
+echo "Play | Patchlwjgl"
+read quest
+
+if [ $quest == "Play" ] ; then
+    ./Launcher
+fi
+
+if [ $quest == "Patchlwjgl" ] ; then
+    echo "Local or Online?"
+    read PatchMethod
+    if [ $PatchMethod == "Online" ] ; then
+        echo "Patching from Online source!"
+        ./lwjglOnline
+    fi
+    if [ $PatchMethod == "Local" ] ; then
+        echo "Patching from Local Source!"
+        ./lwjglLocal
+    fi
+fi

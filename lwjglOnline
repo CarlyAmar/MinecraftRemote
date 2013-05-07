@@ -1,0 +1,2 @@
+#!/bin/bash
+echo "Sorry, Online patching is not done yet! Please download manually from http://sourceforge.net/projects/java-game-lib/files/Official%20Releases/LWJGL%202.6/ and try patching locally"

@@ -4,45 +4,24 @@ ScriptLocation=$PWD
 echo "Welcome to the Launcher Selector!"
 echo "Created by Cheapshades97"
 
-echo What is the path to your Minecraft launchers?
-read PathToLaunchers
+echo "What is the path to your Minecraft launchers?"
+read "PathToLaunchers"
 
 echo "adding Alias..."
 echo alias Minecraft=$PWD/Minecraft >> ~/.bashrc 
 
-echo "Creating Selector..."
+echo "Would you like to set the path to a local update of lwjgl? [Yes] [No]"
+read SetPath
+if [ $SetPath == "Yes" ] ; then
+    echo "What is the path to your local lwjgl?"
+    read PathToLWJG
+fi
 
-cat > Minecraft << EOF
-##!/bin/bash
-
-
-
-#This script will ask which launcher you would like to use and launch Minecraft from the one selected.
-#Make sure to rename launchers so they correspond with the ones listed
-
-cd $PathToLaunchers
-echo "Availible launchers"
-ls --color
-echo "Which launcher would you like to use?"
-
-#checks input for Launcher
-read Launcher
-
-echo You have selected \$Launcher !
-echo Starting Minecraft...
-
-#launches whatever was chosen
-java -jar $PathToLaunchers/\$Launcher.jar
+cat > Settings << EOF
+PathToLaunchers=$PathToLaunchers
+PathToLWJG=$PathToLWJG
 EOF
 
-chmod 755 Minecraft
-echo "Would you like to delete this Setup File? [Y/N]"
-read "delete"
-if [ $delete == "Y" ]; then
-        echo "deleting..."
-        rm -rf Setup
-        echo "Finished!"
-else
-        echo "Finished!"
-fi
+chmod 755 Settings
+
 echo "Restart Terminal and type Minecraft to use the Selector!"
