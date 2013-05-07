@@ -1,6 +1,5 @@
 #!/bin/bash
 
-ScriptLocation=$PWD
 echo "Welcome to the Launcher Selector!"
 echo "Created by Cheapshades97"
 
@@ -8,7 +7,7 @@ echo "What is the path to your Minecraft launchers?"
 read "PathToLaunchers"
 
 echo "adding Alias..."
-echo alias Minecraft=$PWD/Minecraft >> ~/.bashrc 
+echo alias Minecraft=$PWD/Minecraft>> ~/.bashrc 
 
 echo "Would you like to set the path to a local update of lwjgl? [Yes] [No]"
 read SetPath
@@ -20,6 +19,7 @@ fi
 cat > Settings << EOF
 PathToLaunchers=$PathToLaunchers
 PathToLWJG=$PathToLWJG
+ScriptLocation=$PWD
 EOF
 
 chmod 755 Settings

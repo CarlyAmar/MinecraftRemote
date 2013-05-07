@@ -1,12 +1,13 @@
 #!/bin/bash
 
+source Settings
 echo "Welcome to my Alpha launcher!"
 echo "What would you like to do?"
 echo "Play | Patchlwjgl"
 read quest
-
+cd $ScriptLocation
 if [ $quest == "Play" ] ; then
-    ./Launcher
+    bash $ScriptLocation/Launcher
 fi
 
 if [ $quest == "Patchlwjgl" ] ; then
@@ -14,10 +15,10 @@ if [ $quest == "Patchlwjgl" ] ; then
     read PatchMethod
     if [ $PatchMethod == "Online" ] ; then
         echo "Patching from Online source!"
-        ./lwjglOnline
+        bash $ScriptLocation/lwjglOnline
     fi
     if [ $PatchMethod == "Local" ] ; then
         echo "Patching from Local Source!"
-        ./lwjglLocal
+        bash $ScriptLocation/lwjglLocal
     fi
 fi
