@@ -24,3 +24,6 @@ if [ $quest == "Patchlwjgl" ] ; then
         bash $ScriptLocation/lwjglLocal
     fi
 fi
+if [ $quest == "Mod" ] ; then 
+    bash $ScriptLocation/ModManager
+fi

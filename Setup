@@ -16,9 +16,13 @@ if [ $SetPath == "Yes" ] ; then
     read PathToLWJG
 fi
 
+echo "What is the path to your downloaded mods?"
+read PathToMods
+
 cat > Settings << EOF
 PathToLaunchers=$PathToLaunchers
 PathToLWJG=$PathToLWJG
+PathToMods=$PathToMods
 ScriptLocation=$PWD
 EOF
 
