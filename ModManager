@@ -1,5 +1,6 @@
 #!/bin/bash
 source Settings
+source Mods
 
 Mod_Manager () {
 ls --color $PathToMods
@@ -21,10 +22,32 @@ fi
 echo "Continue Modding? [Y/N]"
 read Modding
 }
-if [ $Modding="Y" ] ; then
 
-    Mod_Manager
+echo "Would you like to download, add or install mods? [DL] [A] [I]"
+read Operation
+if [ $Operation == "DL" ] ; then
+    cat Mods
+    echo "Which mod would you like to download?"
+    read ModToDL
+    wget --spider $ModToDL
+    wget -nv $ModToDL $PathToMods
 fi
+if [ $Operation == "I" ] ; then
+    if [ $Modding="Y" ] ; then
+        Mod_Manager
+    fi
+fi
+if [ $Operation == "A" ] ; then
+    echo "What is the Mod you would like to add?"
+    read Mod
+    echo "What is the download link for the mod?"
+    read DLlink
+    echo $Mod=$DLlink>>$ScriptLocation/Mods
+fi
+
+# wget --spider "downloadx.php?f=OptiFine_1.5.2_HD_D2.zip&amp;x=46db9389dcc31594dc9e6c5c97877d8d"
+#
+#
 
 echo "Thank you for using Cheapshades97s ModManager!"
 echo "Goodbye!"

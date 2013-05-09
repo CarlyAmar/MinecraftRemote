@@ -1,0 +1,4 @@
+# This is for indexing mods and their download links so I can download with wget
+# Format: Optifine=www.downloadoptifine.com
+OptiFine="http://optifine.net/downloadx.php?f=OptiFine_1.5.2_HD_D2.zip&x=46db9389dcc31594dc9e6c5c97877d8d"
+lwjgl=http://downloads.sourceforge.net/project/java-game-lib/Official%20Releases/LWJGL%202.6/lwjgl-2.6.zip
