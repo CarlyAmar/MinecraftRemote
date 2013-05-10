@@ -2,6 +2,30 @@
 source Settings
 source Mods
 
+OptiFineInstaller ()
+{
+  ls $PathToMods
+  echo "Which mod would you like to be .jar installed?"
+  read Mod
+  mkdir $PathToMods/$Mod
+  cp $PathToMods/$Mod.zip $PathToMods/$Mod
+  cp ~/.minecraft/bin/minecraft.jar $PathToMods/$Mod
+  cd $PathToMods/$Mod
+  pwd
+  unzip $PathToMods/$Mod/minecraft.jar
+  unzip $PathToMods/$Mod/$Mod*
+  rm -rf $PathToMods/$Mod/$Mod*.zip
+  rm -rf $PathToMods/$Mod/minecraft.jar
+  rm -rf META-INF
+  zip -r $PathToMods/$Mod/minecraft.jar *
+  cp $PathToMods/OptiFine/minecraft.jar $PathToMods
+  rm -rf $PathToMods/$Mod
+#  mv $PathToMods/minecraft.jar $PathToMods/minecraftOptiFine.jar
+  mv ~/.minecraft/bin/minecraft.jar ~/.minecraft/bin/minecraftBackup.jar
+  cp $PathToMods/minecraft.jar ~/.minecraft/bin
+  mv $PathToMods/minecraft.jar $PathToMods/minecraft$Mod.jar
+}
+
 Mod_Manager () {
 ls --color $PathToMods
 ls --color ~/.minecraft/mods
@@ -23,14 +47,16 @@ echo "Continue Modding? [Y/N]"
 read Modding
 }
 
-echo "Would you like to download, add or install mods? [DL] [A] [I]"
+echo "Would you like to Jar install? [JarInstall]"
 read Operation
 if [ $Operation == "DL" ] ; then
     cat Mods
     echo "Which mod would you like to download?"
     read ModToDL
     wget --spider $ModToDL
-    wget -nv $ModToDL $PathToMods
+#    wget -nv $ModToDL $PathToMods
+    wget -U firefox -r -np $ModToDL
+    mv $ModToDL $PathToMods
 fi
 if [ $Operation == "I" ] ; then
     if [ $Modding="Y" ] ; then
@@ -44,6 +70,11 @@ if [ $Operation == "A" ] ; then
     read DLlink
     echo $Mod=$DLlink>>$ScriptLocation/Mods
 fi
+if [ $Operation == "JarInstall" ] ; then
+    OptiFineInstaller
+fi
+
+
 
 # wget --spider "downloadx.php?f=OptiFine_1.5.2_HD_D2.zip&amp;x=46db9389dcc31594dc9e6c5c97877d8d"
 #
