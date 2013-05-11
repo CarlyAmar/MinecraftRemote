@@ -18,7 +18,7 @@ OptiFineInstaller ()
   rm -rf $PathToMods/$Mod/minecraft.jar
   rm -rf META-INF
   zip -r $PathToMods/$Mod/minecraft.jar *
-  cp $PathToMods/OptiFine/minecraft.jar $PathToMods
+  cp $PathToMods/$Mod/minecraft.jar $PathToMods
   rm -rf $PathToMods/$Mod
 #  mv $PathToMods/minecraft.jar $PathToMods/minecraftOptiFine.jar
   mv ~/.minecraft/bin/minecraft.jar ~/.minecraft/bin/minecraftBackup.jar
@@ -35,10 +35,7 @@ read Mod
 echo "Would you like this to be added, or deleted? [Add] [Delete]"
 read Operation
 
-if [ $Operation == "Add" ] ; then
-    cp $PathToMods/$Mod ~/.minecraft/mods
-    echo "added $Mod!"
-fi 
+
 if [ $Operation == "Delete" ] ; then
     rm ~/.minecraft/mods/$Mod
     echo "Removed $Mod"
@@ -47,8 +44,12 @@ echo "Continue Modding? [Y/N]"
 read Modding
 }
 
-echo "Would you like to Jar install? [JarInstall]"
+echo "How would you like to Mod? [JarInstall] [Add] [Delete]"
 read Operation
+if [ $Operation == "Add" ] ; then
+    cp $PathToMods/$Mod ~/.minecraft/mods
+    echo "added $Mod!"
+fi 
 if [ $Operation == "DL" ] ; then
     cat Mods
     echo "Which mod would you like to download?"
@@ -58,7 +59,7 @@ if [ $Operation == "DL" ] ; then
     wget -U firefox -r -np $ModToDL
     mv $ModToDL $PathToMods
 fi
-if [ $Operation == "I" ] ; then
+if [ $Operation == "Add" ] ; then
     if [ $Modding="Y" ] ; then
         Mod_Manager
     fi
