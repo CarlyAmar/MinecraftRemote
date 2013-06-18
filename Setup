@@ -1,6 +1,6 @@
 #!/bin/bash
 
-echo "Welcome to the Launcher Selector!"
+sudo echo "Welcome to the Launcher Selector!"
 echo "Created by Cheapshades97"
 
 echo "What is the path to your Minecraft launchers?"

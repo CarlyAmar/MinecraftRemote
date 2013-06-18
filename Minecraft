@@ -13,17 +13,9 @@ if [ $quest == "Play" ] ; then
 fi
 
 if [ $quest == "Patchlwjgl" ] ; then
-    echo "Local or Online?"
-    read PatchMethod
-    if [ $PatchMethod == "Online" ] ; then
-        echo "Patching from Online source!"
-        bash $ScriptLocation/lwjglOnline
-    fi
-    if [ $PatchMethod == "Local" ] ; then
-        echo "Patching from Local Source!"
-        bash $ScriptLocation/lwjglLocal
-    fi
+    bash $ScriptLocation/lwjglOnline
 fi
+
 if [ $quest == "Mod" ] ; then 
     bash $ScriptLocation/ModManager
 fi
