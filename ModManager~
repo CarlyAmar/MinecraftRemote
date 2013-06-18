@@ -6,7 +6,10 @@ OptiFineInstaller ()
 {
   ls $PathToMods
   echo "Which mod would you like to be .jar installed?"
+<<<<<<< HEAD
   ls --color $PathToMods
+=======
+>>>>>>> 59f7a89f35b4ee8aea2a68e72602aeecd7797ab5
   read Mod
   mkdir $PathToMods/$Mod
   cp $PathToMods/$Mod.zip $PathToMods/$Mod
@@ -45,8 +48,11 @@ echo "Continue Modding? [Y/N]"
 read Modding
 }
 
+<<<<<<< HEAD
 echo "Would you like to download, add Jar Install, or modloader install mods? [DL] [A] [I] [JI]"
+=======
 echo "How would you like to Mod? [JarInstall] [Add] [Delete]"
+>>>>>>> 59f7a89f35b4ee8aea2a68e72602aeecd7797ab5
 read Operation
 if [ $Operation == "Add" ] ; then
     cp $PathToMods/$Mod ~/.minecraft/mods
@@ -73,14 +79,17 @@ if [ $Operation == "A" ] ; then
     read DLlink
     echo $Mod=$DLlink>>$ScriptLocation/Mods
 fi
+<<<<<<< HEAD
 if [ $Operation == "JI" ] ; then
     OptiFineInstaller
 fi
+=======
 if [ $Operation == "JarInstall" ] ; then
     OptiFineInstaller
 fi
 
 
+>>>>>>> 59f7a89f35b4ee8aea2a68e72602aeecd7797ab5
 
 # wget --spider "downloadx.php?f=OptiFine_1.5.2_HD_D2.zip&amp;x=46db9389dcc31594dc9e6c5c97877d8d"
 #

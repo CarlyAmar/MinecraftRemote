@@ -19,4 +19,9 @@ I also plan on adding a limited Mod support, such as an ASCII gui for adding and
 
 Contact me via github (www.github.com/ZackAlfakir/Cheapshades97sMinecraftTool) if you have any problems!
 
+Jar Install means that the script will take a zip file, install it into a copy of your minecraft.jar, rename the old minecraft.jar to minecraftBackup.jar and copy the modded minecraft.jar to your Mods folder calling in minecraft$Mod.jar
+Modding is still experimental and I am not responsible for any damage caused by this script. Backup your files!!!!!
+
+Downloading mods from this script seems to be harder than I thought, you may have to download manually, but until I decide, I will keep the Mods file
+
 Have a nice day :)
