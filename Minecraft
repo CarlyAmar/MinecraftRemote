@@ -9,7 +9,19 @@ echo "Play | Patchlwjgl | Mod"
 read quest
 cd $ScriptLocation
 if [ $quest == "Play" ] ; then
-    bash $ScriptLocation/Launcher
+    echo $PathToLaunchers
+    echo "Availible launchers"
+    ls -f --color $PathToLaunchers
+    echo "Which launcher would you like to use?"
+
+    #checks input for Launcher
+    read Launcher
+
+    echo You have selected $Launcher !
+    echo Starting Minecraft...
+
+    #launches whatever was chosen
+    java -jar $PathToLaunchers/$Launcher.jar
 fi
 
 if [ $quest == "Patchlwjgl" ] ; then

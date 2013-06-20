@@ -2,6 +2,29 @@
 source Settings
 source Mods
 
+iChunInstaller ()
+{
+    echo "Which iChun mod would you like to install?"
+    echo "BackTools, GravityGun, MobAmputation, MobDismemberment, PortalGun, Slender"
+    read Mod
+    if [ $Mod == "BackTools" ] ; then 
+        wget http://www.creeperrepo.net/wget/61465c79ec54db70a97bea6243275980/files/BackTools1.5.2v1.zip
+        mv BackTools*.zip ~/.minecraft/mods
+    fi
+    if [ $Mod == "MobAmputation" ] ; then 
+        wget http://www.creeperrepo.net/wget/cf5a1920a963eeaf18ee8a18887313aa/files/MobAmputation1.5.2v1.zip
+        mv MobAmputation*.zip ~/.minecraft/mods
+    fi
+    if [ $Mod == "MobDismemberment" ] ; then 
+        wget http://www.creeperrepo.net/wget/77c9ccddbc9dc71a5086d104a153eb66/files/MobDismemberment1.5.2v1.zip
+        mv MobDismemberment*.zip ~/.minecraft/mods
+    fi
+    if [ $Mod == "Slender" ] ; then 
+        wget http://www.creeperrepo.net/wget/985c55e1460271f0b36ff46a7303fd95/files/Slender1.5.0.zip
+        mv Slender*.zip ~/.minecraft/mods
+    fi
+}
+
 OptiFineInstaller ()
 {
   ls $PathToMods
@@ -45,8 +68,7 @@ echo "Continue Modding? [Y/N]"
 read Modding
 }
 
-echo "Would you like to download, add Jar Install, or modloader install mods? [DL] [A] [I] [JI]"
-echo "How would you like to Mod? [JarInstall] [Add] [Delete]"
+echo "Would you like to download, add Jar Install, or modloader install mods? You can also install iChun's mods [DL] [A] [I] [JI] [iChun]"
 read Operation
 if [ $Operation == "Add" ] ; then
     cp $PathToMods/$Mod ~/.minecraft/mods
@@ -79,7 +101,9 @@ fi
 if [ $Operation == "JarInstall" ] ; then
     OptiFineInstaller
 fi
-
+if [ $Operation == "iChun" ] ; then
+    iChunInstaller
+fi
 
 
 # wget --spider "downloadx.php?f=OptiFine_1.5.2_HD_D2.zip&amp;x=46db9389dcc31594dc9e6c5c97877d8d"
