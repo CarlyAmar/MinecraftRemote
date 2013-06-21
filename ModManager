@@ -2,6 +2,23 @@
 source Settings
 source Mods
 
+ModInstaller ()
+{
+    echo "Which mod would you like to move to the Mod folder?"
+    ls --color $PathToMods
+    read Mod
+    cp $PathToMods/$Mod* ~/.minecraft/mods
+}
+
+ModUninstaller ()
+{
+    echo "Which mod would you like to uninstall?"
+    ls --color ~/.minecraft/mods
+    read Mod 
+    rm -rf $Mod*
+    echo "Mod Uninstalled!"
+}
+
 iChunInstaller ()
 {
     echo "Which iChun mod would you like to install?"
@@ -27,53 +44,59 @@ iChunInstaller ()
 
 OptiFineInstaller ()
 {
-  ls $PathToMods
-  echo "Which mod would you like to be .jar installed?"
-  ls --color $PathToMods
-  read Mod
-  mkdir $PathToMods/$Mod
-  cp $PathToMods/$Mod.zip $PathToMods/$Mod
-  cp ~/.minecraft/bin/minecraft.jar $PathToMods/$Mod
-  cd $PathToMods/$Mod
-  pwd
-  unzip $PathToMods/$Mod/minecraft.jar
-  unzip $PathToMods/$Mod/$Mod*
-  rm -rf $PathToMods/$Mod/$Mod*.zip
-  rm -rf $PathToMods/$Mod/minecraft.jar
-  rm -rf META-INF
-  zip -r $PathToMods/$Mod/minecraft.jar *
-  cp $PathToMods/$Mod/minecraft.jar $PathToMods
-  rm -rf $PathToMods/$Mod
-#  mv $PathToMods/minecraft.jar $PathToMods/minecraftOptiFine.jar
-  mv ~/.minecraft/bin/minecraft.jar ~/.minecraft/bin/minecraftBackup.jar
-  cp $PathToMods/minecraft.jar ~/.minecraft/bin
-  mv $PathToMods/minecraft.jar $PathToMods/minecraft$Mod.jar
+    ls $PathToMods
+    echo "Which mod would you like to be .jar installed?"
+    ls --color $PathToMods
+    read Mod
+    mkdir $PathToMods/$Mod
+    cp $PathToMods/$Mod.zip $PathToMods/$Mod
+    cp ~/.minecraft/bin/minecraft.jar $PathToMods/$Mod
+    cd $PathToMods/$Mod
+    pwd
+    unzip $PathToMods/$Mod/minecraft.jar
+    unzip $PathToMods/$Mod/$Mod*
+    rm -rf $PathToMods/$Mod/$Mod*.zip
+    rm -rf $PathToMods/$Mod/minecraft.jar
+    rm -rf META-INF
+    zip -r $PathToMods/$Mod/minecraft.jar *
+    cp $PathToMods/$Mod/minecraft.jar $PathToMods
+    rm -rf $PathToMods/$Mod
+    #  mv $PathToMods/minecraft.jar $PathToMods/minecraftOptiFine.jar
+    mv ~/.minecraft/bin/minecraft.jar ~/.minecraft/bin/minecraftBackup.jar
+    cp $PathToMods/minecraft.jar ~/.minecraft/bin
+    mv $PathToMods/minecraft.jar $PathToMods/minecraft$Mod.jar
 }
 
-Mod_Manager () {
-ls --color $PathToMods
-ls --color ~/.minecraft/mods
-echo "Which mod would you like to add/delete?"
-read Mod
+Mod_Manager () 
+{
+    echo "Downloaded Mods"
+    ls --color $PathToMods
+    echo "~~~~~~~~~~~~~~"
+    echo "Mods Installed"
+    ls --color ~/.minecraft/mods
+    echo "What sort of modding would you like to do?"
+    echo "Uninstall a mod [Uninstall]"
+    read Operation
 
-echo "Would you like this to be added, or deleted? [Add] [Delete]"
-read Operation
 
+        if [ $Operation == "Uninstall" ] ; then
+            ModUninstaller
+        fi
+        
+        if [ $Operation == "ModloaderInstall" ] ; then
+            ModInstaller
+        fi
+        
+        if [ $Operation == "JarInstall" ] ; then
+            OptiFineInstaller
+        fi
+        
+        if [ $Operation == "DownloadAndInstall" ] ; then
+            iChunInstaller
+        fi
 
-if [ $Operation == "Delete" ] ; then
-    rm ~/.minecraft/mods/$Mod
-    echo "Removed $Mod"
-fi
-echo "Continue Modding? [Y/N]"
-read Modding
 }
 
-echo "Would you like to download, add Jar Install, or modloader install mods? You can also install iChun's mods [DL] [A] [I] [JI] [iChun]"
-read Operation
-if [ $Operation == "Add" ] ; then
-    cp $PathToMods/$Mod ~/.minecraft/mods
-    echo "added $Mod!"
-fi 
 if [ $Operation == "DL" ] ; then
     cat Mods
     echo "Which mod would you like to download?"
@@ -95,20 +118,6 @@ if [ $Operation == "A" ] ; then
     read DLlink
     echo $Mod=$DLlink>>$ScriptLocation/Mods
 fi
-if [ $Operation == "JI" ] ; then
-    OptiFineInstaller
-fi
-if [ $Operation == "JarInstall" ] ; then
-    OptiFineInstaller
-fi
-if [ $Operation == "iChun" ] ; then
-    iChunInstaller
-fi
-
-
-# wget --spider "downloadx.php?f=OptiFine_1.5.2_HD_D2.zip&amp;x=46db9389dcc31594dc9e6c5c97877d8d"
-#
-#
 
 echo "Thank you for using Cheapshades97s ModManager!"
 echo "Goodbye!"
