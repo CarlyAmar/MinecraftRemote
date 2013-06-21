@@ -67,6 +67,15 @@ OptiFineInstaller ()
     mv $PathToMods/minecraft.jar $PathToMods/minecraft$Mod.jar
 }
 
+ModAdder ()
+{
+    echo "What is the Mod you would like to add?"
+    read Mod
+    echo "What is the download link for the mod?"
+    read DLlink
+    echo $Mod=$DLlink>>$ScriptLocation/Mods
+}
+
 Mod_Manager () 
 {
     echo "Downloaded Mods"
@@ -94,30 +103,12 @@ Mod_Manager ()
         if [ $Operation == "DownloadAndInstall" ] ; then
             iChunInstaller
         fi
+        
+        if [ $Operation == "Add" ] ; then 
+            ModAdder
+        fi
 
 }
-
-if [ $Operation == "DL" ] ; then
-    cat Mods
-    echo "Which mod would you like to download?"
-    read ModToDL
-    wget --spider $ModToDL
-#    wget -nv $ModToDL $PathToMods
-    wget -U firefox -r -np $ModToDL
-    mv $ModToDL $PathToMods
-fi
-if [ $Operation == "Add" ] ; then
-    if [ $Modding="Y" ] ; then
-        Mod_Manager
-    fi
-fi
-if [ $Operation == "A" ] ; then
-    echo "What is the Mod you would like to add?"
-    read Mod
-    echo "What is the download link for the mod?"
-    read DLlink
-    echo $Mod=$DLlink>>$ScriptLocation/Mods
-fi
 
 echo "Thank you for using Cheapshades97s ModManager!"
 echo "Goodbye!"
