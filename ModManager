@@ -1,7 +1,6 @@
 #!/bin/bash
 source Settings
 source Mods
-
 ModInstaller ()
 {
     echo "Which mod would you like to move to the Mod folder?"
@@ -26,20 +25,30 @@ iChunInstaller ()
     read Mod
     if [ $Mod == "BackTools" ] ; then 
         wget http://www.creeperrepo.net/wget/61465c79ec54db70a97bea6243275980/files/BackTools1.5.2v1.zip
-        mv BackTools*.zip ~/.minecraft/mods
+        cp BackTools*.zip ~/.minecraft/mods
     fi
     if [ $Mod == "MobAmputation" ] ; then 
         wget http://www.creeperrepo.net/wget/cf5a1920a963eeaf18ee8a18887313aa/files/MobAmputation1.5.2v1.zip
-        mv MobAmputation*.zip ~/.minecraft/mods
+        cp MobAmputation*.zip ~/.minecraft/mods
     fi
     if [ $Mod == "MobDismemberment" ] ; then 
         wget http://www.creeperrepo.net/wget/77c9ccddbc9dc71a5086d104a153eb66/files/MobDismemberment1.5.2v1.zip
-        mv MobDismemberment*.zip ~/.minecraft/mods
+        cp MobDismemberment*.zip ~/.minecraft/mods
     fi
     if [ $Mod == "Slender" ] ; then 
         wget http://www.creeperrepo.net/wget/985c55e1460271f0b36ff46a7303fd95/files/Slender1.5.0.zip
-        mv Slender*.zip ~/.minecraft/mods
+        cp Slender*.zip ~/.minecraft/mods
     fi
+    echo "Would you like to keep the mod installed locally? Y/N"
+    read StoreLocally
+        if [ $StoreLocally == "Y" ] ; then 
+            echo "Thank you for using my mod manager!"
+        fi
+        
+        if [ $StoreLocally == "N" ] ; then
+            rm -rf $Mod*
+            echo "Thank you for using my mod manager!"
+        fi
 }
 
 OptiFineInstaller ()
@@ -84,7 +93,7 @@ Mod_Manager ()
     echo "Mods Installed"
     ls --color ~/.minecraft/mods
     echo "What sort of modding would you like to do?"
-    echo "Uninstall a mod [Uninstall]"
+    echo "Uninstall a mod [Uninstall] [ModloaderInstall] [JarInstall] [DownloadAndInstall] [Add]"
     read Operation
 
 
@@ -109,6 +118,6 @@ Mod_Manager ()
         fi
 
 }
-
+Mod_Manager
 echo "Thank you for using Cheapshades97s ModManager!"
 echo "Goodbye!"
