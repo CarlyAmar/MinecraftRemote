@@ -5,9 +5,24 @@ source $DIR/Settings
 echo $ScriptLocation
 echo "Welcome to my Alpha launcher!"
 echo "What would you like to do?"
-echo "Play | Patchlwjgl | Mod | Server"
+echo "Play | Patchlwjgl | Mod | Server | Download"
 read quest
 cd $ScriptLocation
+
+Download () 
+{
+    echo "[UpdateScript] [DownloadLauncher]"
+    read Operation
+    if [ $Operation == "UpdateScript" ] ; then
+        git pull 
+    fi
+    if [ $Operation == "DownloadLauncher" ] ; then
+        wget http://magiclauncher.com/download.php?f=MagicLauncher_1.1.6.jar
+        mv download* $PathToLaunchers/MagicLauncher.jar
+        chmod 750 $PathToLaunchers/MagicLauncher.jar
+    fi
+}
+
 if [ $quest == "Play" ] ; then
     echo $PathToLaunchers
     echo "Availible launchers"
@@ -85,4 +100,7 @@ fi
 
 if [ $quest == "Server" ] ; then 
     bash $ScriptLocation/Server
+fi
+if [ $quest == "Download" ] ; then
+    Download
 fi
