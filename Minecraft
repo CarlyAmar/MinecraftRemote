@@ -69,16 +69,20 @@ if [ $quest == "Patchlwjgl" ] ; then
         echo "Done Patching!"
     }
 
-echo "Local or Online"
-read PatchMethod
-if [ $PatchMethod == "Online" ] ; then
-    Online
-fi
-if [ $PatchMethod == "Local" ] ; then 
-    Local
-fi
-fi
+    echo "Local or Online"
+    read PatchMethod
+    if [ $PatchMethod == "Online" ] ; then
+        Online
+    fi
 
+    if [ $PatchMethod == "Local" ] ; then 
+        Local
+    fi
+fi
 if [ $quest == "Mod" ] ; then 
     bash $ScriptLocation/ModManager
+fi
+
+if [ $quest == "Server" ] ; then 
+    bash $ScriptLocation/Server
 fi

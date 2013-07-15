@@ -1,13 +1,13 @@
 #!/bin/bash
 
-sudo echo "Welcome to the Launcher Selector!"
+echo "Welcome to the Launcher Selector!"
 echo "Created by Cheapshades97"
 
 echo "What is the path to your Minecraft launchers?"
 read "PathToLaunchers"
 
 echo "adding Alias..."
-echo alias Minecraft=$PWD/Minecraft>> ~/.bashrc 
+sudo echo alias Minecraft=$PWD/Minecraft>> ~/.bashrc 
 
 echo "Would you like to set the path to a local update of lwjgl? [Yes] [No]"
 read SetPath

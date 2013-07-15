@@ -1,0 +1,25 @@
+#!/bin/bash
+source Settings
+
+ServerSetup ()
+{
+    echo "What would you like the server name to be?"
+    read ServerName
+    echo "Where would you like the server to be saved?"
+    read ServerLocation
+mkdir $ServerName
+#cp $ServerName $ServerLocation
+#    mkdir $ServerLocation/$ServerName
+#    wget https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar
+#    cp minecraft_server.jar $ServerLocation/$ServerName
+ls $ServerLocation    
+#    echo "::Now running initial setup of server::"
+#    java -jar minecraft_server.jar
+}
+
+echo "What would you like to do? [Setup]"
+read Operation
+
+    if [ $Operation == "Setup" ] ; then 
+        ServerSetup
+    fi
