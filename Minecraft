@@ -5,7 +5,7 @@ source $DIR/Settings
 echo $ScriptLocation
 echo "Welcome to my Alpha launcher!"
 echo "What would you like to do?"
-echo "Play | Patchlwjgl | Mod"
+echo "Play | Patchlwjgl | Mod | Server"
 read quest
 cd $ScriptLocation
 if [ $quest == "Play" ] ; then

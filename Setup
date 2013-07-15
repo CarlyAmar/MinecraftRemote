@@ -19,8 +19,8 @@ fi
 echo "What is the path to your downloaded mods?"
 read PathToMods
 
-#echo "What is the path to your Servers?"
-#read ServerLocation
+echo "What is the path to your Servers?"
+read ServerLocation
 
 cat > Settings << EOF
 PathToLaunchers=$PathToLaunchers

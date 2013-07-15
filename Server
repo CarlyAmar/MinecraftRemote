@@ -1,15 +1,15 @@
 #!/bin/bash
-source Settings
-
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+source $DIR/Settings
 
 ServerSetup ()
 {
     cd
     echo "What would you like the server name to be?"
     read ServerName
-    echo "Where are your servers saved?"
-    echo "Please use /home/user/ Formating"
-    read ServerLocation
+#    echo "Where are your servers saved?"
+#    echo "Please use /home/user/ Formating"
+#    read ServerLocation
     cd $ServerLocation
     mkdir $ServerName
     ls $ServerLocation
@@ -24,12 +24,19 @@ ServerSetup ()
 
 ServerStart ()
 {
-   echo "Test" 
+   echo "Which Server would you like to start?"
+   ls $ServerLocation
+   read Server
+   cd $ServerLocation/$ServerName
+   java -jar $ServerLocation/$Server/minecraft_server.jar
 }
 
-echo "What would you like to do? [Setup]"
+echo "What would you like to do? [Setup] [Start]"
 read Operation
 
     if [ $Operation == "Setup" ] ; then 
         ServerSetup
+    fi
+    if [ $Operation == "Start" ] ; then
+        ServerStart
     fi
