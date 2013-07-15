@@ -19,11 +19,15 @@ fi
 echo "What is the path to your downloaded mods?"
 read PathToMods
 
+#echo "What is the path to your Servers?"
+#read ServerLocation
+
 cat > Settings << EOF
 PathToLaunchers=$PathToLaunchers
 PathToLWJG=$PathToLWJG
 PathToMods=$PathToMods
 ScriptLocation=$PWD
+ServerLocation=$ServerLocation
 EOF
 
 chmod 755 Settings

@@ -1,20 +1,30 @@
 #!/bin/bash
 source Settings
 
+
 ServerSetup ()
 {
+    cd
     echo "What would you like the server name to be?"
     read ServerName
-    echo "Where would you like the server to be saved?"
+    echo "Where are your servers saved?"
+    echo "Please use /home/user/ Formating"
     read ServerLocation
-mkdir $ServerName
-#cp $ServerName $ServerLocation
-#    mkdir $ServerLocation/$ServerName
-#    wget https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar
-#    cp minecraft_server.jar $ServerLocation/$ServerName
-ls $ServerLocation    
-#    echo "::Now running initial setup of server::"
-#    java -jar minecraft_server.jar
+    cd $ServerLocation
+    mkdir $ServerName
+    ls $ServerLocation
+    wget https://s3.amazonaws.com/MinecraftDownload/launcher/minecraft_server.jar
+    mv minecraft_server.jar $ServerLocation/$ServerName
+    ls $ServerLocation
+    pwd
+    echo "::Now running initial setup of server::"
+    cd $ServerLocation/$ServerName
+    java -jar $ServerLocation/$ServerName/minecraft_server.jar
+}
+
+ServerStart ()
+{
+   echo "Test" 
 }
 
 echo "What would you like to do? [Setup]"
