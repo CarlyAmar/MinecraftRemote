@@ -1,6 +1,14 @@
 #!/bin/bash
 source Settings
 source Mods
+
+NewOptiFine ()
+{
+    cp ~/.minecraft/versions/1.6.1 ~/.minecraft/versions/1.6.1_OptiFine
+    cp ~/.minecraft/versions/1.6.1_OptiFine/1.6.1.json ~/.minecraft/versions/1.6.1_OptiFine/1.6.1_OptiFine.json
+    
+}
+
 ModInstaller ()
 {
     echo "Which mod would you like to move to the Mod folder?"

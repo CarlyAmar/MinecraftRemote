@@ -2,6 +2,7 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 source $DIR/Settings
 
+
 ServerSetup ()
 {
     cd
@@ -27,8 +28,19 @@ ServerStart ()
    echo "Which Server would you like to start?"
    ls $ServerLocation
    read Server
-   cd $ServerLocation/$ServerName
-   java -jar $ServerLocation/$Server/minecraft_server.jar
+   echo "Timer set: [00][s/m/h/d] Example 45s Leave blank for no timer"
+   read Timer
+   grep -o "[0-9]" <<< "$input"
+   output=$(grep -o "[0-9]" <<<"$var")
+   if [ $output > 1 ] ; then   
+     timeout --foreground $Timer java -jar $ServerLocation/$Server/minecraft_server.jar
+   fi         
+   if [ $output < 1 ] ; then
+      java -jar $ServerLocation/$Server/minecraft_server.jar
+   fi
+       
+#    cd $ServerLocation/$ServerName
+#    java -jar $ServerLocation/$Server/minecraft_server.jar
 }
 
 echo "What would you like to do? [Setup] [Start]"
